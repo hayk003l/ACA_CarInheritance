@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 
+#include "carInterface.hpp"
 
-class Car {
+class Car : public CarInterface {
     public:
     Car(const std::string& engineType, const std::string& countryOfManifacture, const std::string& bodyType) : _engineType(engineType), _countryOfManifacture(countryOfManifacture), _bodyType(bodyType) {}
     Car() {}
@@ -13,6 +14,38 @@ class Car {
         std::cout << "Engine type - " << _engineType << std::endl;
         std::cout << "Country of manifacture - " << _countryOfManifacture << std::endl;
         std::cout << "Body Type - " << _bodyType << std::endl;
+    }
+
+    void gasPedal(const int& impactStrength) override {
+        std::cout << "Driving speed - " << impactStrength << std::endl;
+    }
+
+    void airCondition(bool onOrOff) override {
+        if(onOrOff) {
+            std::cout << "A/C on" << std::endl;
+        }
+        else {
+            std::cout << "A/C off" << std::endl;
+        }
+    }
+
+    void soundSystem(const int& volume) override {
+        std::cout << "Music Volume - " << volume << std::endl;
+    }
+
+    void carBlinker(const std::string& direction) {
+        if(direction == "right" || direction == "left") {
+            std::cout << "I'm gonna turn " << direction << std::endl;
+        }
+        else {
+            std::cout << "Wrong command" << std::endl;
+        }
+    }
+
+    void horn(bool carHorn) {
+        if(carHorn) {
+            std::cout << "HORN" << std::endl;
+        }
     }
 
     private:
